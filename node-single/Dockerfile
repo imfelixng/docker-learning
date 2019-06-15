@@ -2,8 +2,8 @@ FROM node:alpine
 
 COPY package.json .
 
-RUN npm start
+RUN npm install
 
 COPY . .
 
-CMD ["npm start"]
+CMD ["npm", "start"]
