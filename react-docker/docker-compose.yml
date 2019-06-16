@@ -2,11 +2,22 @@ version: '3'
 services:
   react-docker:
     build:
-      context: ./ # same build .
-      dockerfile: ./Dockerfile.dev
+      context: . # same build .
+      dockerfile: Dockerfile.dev
     ports:
       - "3000:3000"
     volumes:
       - /app/node_modules
       - .:/app # . is root project
     restart: always
+  tests:
+    build:
+      context: . # same build .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3001:3001"
+    volumes:
+      - /app/node_modules
+      - .:/app # . is root project
+    restart: always
+    command: ['npm', 'run', 'test']
