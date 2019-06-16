@@ -2,9 +2,11 @@ version: '3'
 services:
   redis-server:
     image: redis
+    restart: always
   node-app:
     build: ./
     ports:
       - "4001:8081"
+    restart: always # no, always, on-failure, unless-stopped, status code: 0 - ok, 1, 2, 3,.. - have error
     depends_on:
       - redis-server
